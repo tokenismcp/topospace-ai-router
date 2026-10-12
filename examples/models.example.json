@@ -1,0 +1,88 @@
+{
+  "providers": {
+    "openai": {
+      "type": "openai",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    "anthropic": {
+      "type": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY"
+    },
+    "gemini": {
+      "type": "gemini",
+      "api_key_env": "GEMINI_API_KEY"
+    },
+    "ollama": {
+      "type": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "auth": "none"
+    }
+  },
+  "models": [
+    {
+      "name": "local-small",
+      "provider": "ollama",
+      "model": "gemma3:4b",
+      "capability": 0.55,
+      "input_usd_per_mtok": 0,
+      "output_usd_per_mtok": 0,
+      "first_token_ms": 400,
+      "tokens_per_second": 25,
+      "max_context_tokens": 8192,
+      "tier": 0,
+      "fallback": "cheap-hosted"
+    },
+    {
+      "name": "cheap-hosted",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "capability": 0.62,
+      "input_usd_per_mtok": 0.15,
+      "output_usd_per_mtok": 0.6,
+      "cached_input_usd_per_mtok": 0.075,
+      "tier": 0,
+      "fallback": "mid",
+      "first_token_ms": 300,
+      "tokens_per_second": 110
+    },
+    {
+      "name": "mid",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "capability": 0.85,
+      "input_usd_per_mtok": 3,
+      "output_usd_per_mtok": 15,
+      "cached_input_usd_per_mtok": 0.3,
+      "tier": 1,
+      "fallback": "gemini-pro",
+      "first_token_ms": 600,
+      "tokens_per_second": 70
+    },
+    {
+      "name": "gemini-pro",
+      "provider": "gemini",
+      "model": "gemini-2.5-pro",
+      "capability": 0.9,
+      "input_usd_per_mtok": 1.25,
+      "output_usd_per_mtok": 10,
+      "tier": 2,
+      "first_token_ms": 900,
+      "tokens_per_second": 50
+    }
+  ],
+  "roles": {
+    "chat": [
+      "local-small",
+      "cheap-hosted"
+    ],
+    "writing": [
+      "mid",
+      "cheap-hosted"
+    ],
+    "hard-reasoning": [
+      "gemini-pro",
+      "mid"
+    ]
+  },
+  "_comment": "Illustrative. Replace model ids, capabilities and prices with your own: prices from your provider's price list, capabilities from your own evaluation. Keys are never written here; each provider names the environment variable that holds its key."
+}

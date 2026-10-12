@@ -1,0 +1,49 @@
+# The same catalogue in TOML. Keys are never written here: each provider names
+# the environment variable that holds its key.
+
+[providers.ollama]
+type = "openai"                       # anything that speaks the OpenAI API
+base_url = "http://localhost:11434/v1"
+auth = "none"
+
+[providers.openai]
+type = "openai"
+api_key_env = "OPENAI_API_KEY"
+
+[providers.anthropic]
+type = "anthropic"
+api_key_env = "ANTHROPIC_API_KEY"
+
+[[models]]
+name = "local-small"
+provider = "ollama"
+model = "gemma3:4b"
+capability = 0.55                     # from your own evaluation
+input_usd_per_mtok = 0
+output_usd_per_mtok = 0
+tier = 0
+fallback = "cheap-hosted"             # who takes over if this one fails
+
+[[models]]
+name = "cheap-hosted"
+provider = "openai"
+model = "gpt-4o-mini"
+capability = 0.62
+input_usd_per_mtok = 0.15
+output_usd_per_mtok = 0.6
+cached_input_usd_per_mtok = 0.075
+tier = 0
+fallback = "strong"
+
+[[models]]
+name = "strong"
+provider = "anthropic"
+model = "claude-sonnet-4-5"
+capability = 0.86
+input_usd_per_mtok = 3
+output_usd_per_mtok = 15
+tier = 1
+
+[roles]
+chat = ["local-small", "cheap-hosted"]
+writing = ["strong", "cheap-hosted"]

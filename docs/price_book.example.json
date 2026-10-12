@@ -1,0 +1,6 @@
+{
+  "_comment": "Micro-USD per 1000 tokens. These are ILLUSTRATIVE development values, not a vendor quote: replace every line with the prices in your own provider contract before serving production traffic. effective_from is a unix timestamp, so a price change is dated and a historical request can be re-priced exactly as it was billed. Optional cached_input: the price of an input token the provider served from its prompt cache; set it only if your contract discounts cached tokens -- it is also what tells the planner the provider caches prefixes. Without it cached tokens are billed at the full input price.",
+  "gpt-4o-mini": {"input": 150, "output": 600, "effective_from": 0},
+  "gpt-4o": {"input": 2500, "output": 10000, "effective_from": 0},
+  "o4-mini": {"input": 1100, "output": 4400, "effective_from": 0}
+}
