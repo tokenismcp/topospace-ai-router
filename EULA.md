@@ -1,4 +1,4 @@
-# TopoSpace MCP: End User License Agreement
+# TopoSpace AI Router: End User License Agreement
 
 Copyright 2026 Caleb Lee, J1729 Labs ("Licensor"). All rights reserved.
 

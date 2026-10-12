@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.17.3
+
+* **Renamed to TopoSpace AI Router.** The distribution is `topospace-ai-router`; the
+  command `topospace` and every `TOPOSPACE_*` setting are unchanged. (2.17.1 had renamed
+  it to "TopoSpace MCP", a name that promised a protocol the program does not speak.)
+
 ## 2.17.2
 
 * **Distributed as a compiled program** (`topospace-mcp-<version>-<system>.tar.gz`,

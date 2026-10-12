@@ -30,7 +30,7 @@ revocations, quota windows and the billing ledger.
 
 ```bash
 docker run -p 8000:8000 --env-file .env -v topospace-data:/data \
-  ghcr.io/tokenismcp/topospace-mcp:<version>
+  ghcr.io/tokenismcp/topospace-ai-router:<version>
 ```
 
 The image runs as a non-root user and writes only to `/data`.

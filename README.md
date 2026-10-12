@@ -1,10 +1,13 @@
-# TopoSpace MCP
+# TopoSpace AI Router
 
-**An AI execution optimization plane.** For every request it decides, as one joint
-decision, *which context is exposed*, *which model runs*, *which execution path is
-taken*, and *how many tokens are spent*, across the models you configure: on your
-own machine, ChatGPT, Claude, Gemini, or anything that speaks the OpenAI API, each
-called with **your own API key**.
+**An AI router that decides, as one joint decision, which context is exposed, which model
+runs, which execution path is taken, and how many tokens are spent**, across your own
+local and hosted models: on your own machine, ChatGPT, Claude, Gemini, or anything that
+speaks the OpenAI API, each called with **your own API key**. (In the terms of its
+papers, it is an *AI execution optimization plane*.)
+
+It runs on your machine or your servers; it is not a hosted marketplace of models, and
+it never sees your keys or your prompts.
 
 This repository is the distribution of the compiled program: binaries, documentation
 and the licence. The source is not published.
@@ -31,8 +34,8 @@ Download the archive for your system from **Releases**, check it against the
 published SHA-256, and unpack it:
 
 ```bash
-tar xzf topospace-mcp-<version>-macos-arm64.tar.gz
-cd topospace-mcp-<version>-macos-arm64
+tar xzf topospace-ai-router-<version>-macos-arm64.tar.gz
+cd topospace-ai-router-<version>-macos-arm64
 ./topospace serve
 ```
 
